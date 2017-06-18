@@ -7,7 +7,7 @@ const initialState = {
 
 const stopwatch = (state = initialState, action) => {
     switch (action.type) {
-        case 'START_TIMER':
+        case 'START_INTERVAL':
             return {
                 ...state,
                 interval: action.payload
@@ -22,7 +22,7 @@ const stopwatch = (state = initialState, action) => {
         // return Object.assign({}, state, { elapsed: state.startTime - 1 });
         // }
         // }
-        case 'STOP_TIMER':
+        case 'STOP_INTERVAL':
             clearInterval(state.interval);
             return {
                 ...state,
