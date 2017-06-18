@@ -1,24 +1,37 @@
 const initialState = {
-  elapsed: 60,
-  startTime: 60
+    elapsed: 0,
+    startTime: 60,
+    interval: null,
 };
 
 
-const stopwatch = ( state = initialState, action) => {
-  switch (action.type) {
-    case 'START_TIMER':
-      return Object.assign({}, state);
-    case 'TIMER_TICK':
-      // return Object.assign({}, state, { elapsed: 60, startTime: startTime--})
-    // return {...state, elapsed: state.startTime - 1, startTime: state.startTime --}
-     // return Object.assign({}, state, { elapsed: state.startTime - 1 });
-    // }
-    // }
-    case 'STOP_TIMER':
-      return state;
-    default:
-      return state;
-  }
+const stopwatch = (state = initialState, action) => {
+    switch (action.type) {
+        case 'START_TIMER':
+            return {
+                ...state,
+                interval: action.payload
+            };
+        case 'TIMER_TICK':
+            // return Object.assign({}, state, { elapsed: 60, startTime: startTime--})
+            return {
+                ...state,
+                elapsed: state.startTime + 1,
+                startTime: (state.startTime - 1)
+            };
+        // return Object.assign({}, state, { elapsed: state.startTime - 1 });
+        // }
+        // }
+        case 'STOP_TIMER':
+            clearInterval(state.interval);
+            return {
+                ...state,
+                ...initialState
+            };
+        case 'stop_interval':
+        default:
+            return state;
+    }
 };
 
 export default stopwatch

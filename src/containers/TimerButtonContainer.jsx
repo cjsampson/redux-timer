@@ -1,7 +1,7 @@
 import React from 'react';
 import TimerButtons from '../components/TimerButtons';
 import { connect } from 'react-redux';
-import { start } from '../actions';
+import { start, stop } from '../actions';
 
 
 const mapStateToProps = (state) => (
@@ -12,10 +12,11 @@ const mapStateToProps = (state) => (
 )
 
 const mapDispatchToProps = ( dispatch ) => ({
-  startOnClick: () => dispatch(start)
+    startOnClick: () => dispatch(start),
+    stopOnClick: () => dispatch(stop)
 })
 
 
-const TimerButtonContainer = connect(mapStateToProps, mapDispatchToProps)(TimerButtons);
+const TimerButtonContainer = connect(null, mapDispatchToProps)(TimerButtons);
 
 export default TimerButtonContainer;

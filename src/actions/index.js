@@ -1,19 +1,20 @@
-let timer = 60;
 
 export const start = (dispatch) => {
-  // clearInterval(timer);
-  // timer = setInterval(() => dispatch(tick()), 1000);
-  
-  dispatch({ type: 'START_TIMER' });
-  // dispatch(tick())
-}
+    dispatch(
+        {
+            type: 'START_TIMER',
+            payload: setInterval(() => dispatch({
+                type: 'TIMER_TICK',
+                currentTime: 1
+            }), 1000)
+        });
+};
 
 // export const tick = () => ({
 //   type: 'TIMER_TICK'
 // });
 
-export const stop = () => {
-  clearInterval(timer);
-  return { type: 'STOP_TIMER' }
-}
+export const stop = (dispatch) => {
+   dispatch({ type: 'STOP_TIMER' });
+};
 
