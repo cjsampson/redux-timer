@@ -4,19 +4,15 @@ import { connect } from 'react-redux';
 import { start, stop } from '../actions';
 
 
-const mapStateToProps = (state) => (
-  console.log('state from Container: ', state)
-// {
-//   elapsed: state.stopwatch.elapsed,
-// }
-)
+const mapStateToProps = (state) => ({
+  timeRemaining: state.stopwatch.startTime
+})
 
 const mapDispatchToProps = ( dispatch ) => ({
     startOnClick: () => dispatch(start),
     stopOnClick: () => dispatch(stop)
 })
 
-
-const TimerButtonContainer = connect(null, mapDispatchToProps)(TimerButtons);
+const TimerButtonContainer = connect(mapStateToProps, mapDispatchToProps)(TimerButtons);
 
 export default TimerButtonContainer;

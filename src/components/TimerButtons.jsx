@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const TimerButtons = ({ startOnClick, stopOnClick }) => (
+const TimerButtons = ({ timeRemaining, startOnClick, stopOnClick }) => (
   <div>
-    {/* // <div>{elasped ? elasped : null}</div> */}
+    <p>{ timeRemaining }</p>
     <button onClick={() => startOnClick()}>Start</button>
     <button onClick={() => stopOnClick()}>Stop</button>
   </div>
